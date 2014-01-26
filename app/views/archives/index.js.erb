@@ -1,0 +1,18 @@
+var meta_id = "<%= @meta_id %>";
+var list_id = $('#archives-table').data("list");
+
+$('#archives-table').data("meta-id", meta_id);
+
+function poll_meta_id(meta_id) {
+    $.ajax({
+        type:"GET",
+        url:"/lists/" + list_id + "/poll_for_changes.js",
+        data:{meta_id:meta_id}
+    });
+}
+
+poll_meta_id(meta_id);
+
+
+
+

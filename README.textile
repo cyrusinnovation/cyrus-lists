@@ -1,0 +1,96 @@
+h1. Listlist
+
+Listlist is a mailing list management system which relies on gentle anarchy, allowing every registered user to create/update/delete lists.
+
+h2. More Information
+
+User-facing is the list management. It also sends emails.
+
+h2. Dependencies
+
+To develop this application and run all the specs locally, you will need:
+
+* rvm
+* postgresql
+* redis
+
+(If you want to run all the specs without starting redis, you can run
+@rake spec:noredis@
+)
+
+h3. Setting up PostgreSQL
+
+I don't know about you, but I rarely ever set up rails apps with postgres, so I always forget how to make it work. Here it is, for next time. Change the password to what you really want it to be. hunter2 is a reference to (bash.org)[http://www.bash.org/?244321].
+
+bq. $ psql -U #{someadminuser} postgres
+postgres=> CREATE USER listlist WITH PASSWORD 'hunter2';
+postgres=> ALTER ROLE listlist WITH CREATEDB;
+postgres=> \q
+$ psql -U listlist postgres
+postgres=> CREATE DATABASE listlist_development;
+postgres=> \q
+
+I hope that helps. It sure as hell will help me.
+
+h3. Running in development mode
+
+If you want to get the archives going, right now, you need a resque worker in dev mode. Ergo:
+
+    $ rake resque:work
+
+h3. Running with coverage
+
+Coverage will be enabled if you set the COV environment variable to ... Something. Ergo:
+
+    $ COV=1 rake spec
+    $ COV=true rake spec
+
+Both will work.
+
+h3. Clearing the cache
+
+You may run into issues parsing some emails. Or something. There are two options:
+
+1) Delete the tmp directory
+2) From the rails console, run Rails.cache.clear
+
+
+h2. Installing the Application
+
+The production application is hosted on Heroku. Check DEPLOY.textile for deployment details.
+
+h2. Getting Started
+
+All settings are managed by the rails_config gem. Most of the values are bogus but should be ok for dev and testing.
+
+User accounts are automatically created when logging in for the first time using a gmail account.  You can use another google apps domain by changing the 'organization_domain' setting.
+
+When you login, you'll see a list of mailing lists. You can reorder them,
+edit them, join one, leave one, create one, delete one.
+And then you can send emails to those lists.
+
+h2. Documentation and Support
+
+h3. Deleting an Email Address from All Lists
+
+Use the 'Remove user' link on the ListList home page to remove a user from all
+lists, and from the database.
+!http://imgur.com/zQfxc9Q.png!
+
+h4. Issues
+
+Check the issues in Github.
+
+h2. Credits
+
+Thanks go to:
+- Rex Madden for the initial idea
+- Jesse Chen and Daniel Ramteke for the initial Python implementation
+- Jim Stewart and Aldric Giacomoni for some bug-fixing
+- Jacob O'Donnell, Najati Imam and Aldric Giacomoni for the Rails implementation
+- Steven Nunez and Beth Brown for implementation of archives
+- All of Cyrus for ideas, fixes and improvements
+
+h2. License
+
+Decision pending.

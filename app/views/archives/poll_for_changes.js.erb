@@ -1,0 +1,13 @@
+<% if @job_status.nil? %>
+  setTimeout(function(){poll_meta_id("<%= @meta_id %>")}, 3000)
+<% elsif @job_status %>
+  $('.loading').hide();
+  $('header').append("<div id='flash_notice'><%=  flash.notice %></div>");
+  $('#archives-table').html("<%= j render partial: 'archive_emails', locals: {:archive_emails => @archive_emails} %>");
+<% else %>
+  $('.loading').hide();
+  $('#archives-table').append("Your Query Failed. Oh Dear!")
+<% end %>
+
+
+

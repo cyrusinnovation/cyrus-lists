@@ -1,0 +1,5 @@
+= form_tag remove_user_path, method: :delete do
+  .field
+    = label_tag "remove_user", "Remove user from all lists:"
+    = select_tag 'id', ("<option></option>" + options_from_collection_for_select(User.all.sort_by(&:email), 'id', 'email')).html_safe
+    = submit_tag 'Remove', :confirm => "Are you sure? This cannot be undone."

@@ -1,0 +1,33 @@
+.edit_form
+  = "Last mail sent: #{list_display_date(@list)}"
+  = form_tag change_description_path do
+    = hidden_field_tag :list_id, @list.id
+    .field
+      = label_tag :description, 'Change the description of this list:'
+      = text_field_tag :description, @list.description
+      = submit_tag 'Change Description'
+
+  = form_tag change_category_path do
+    = hidden_field_tag :list_id, @list.id
+    .field
+      = label_tag :category, 'Change the category of this list:'
+      = text_field_tag :category, @list.category.name
+      = submit_tag 'Change Category'
+
+  - if @list.can_user_modify?(@user)
+    = form_tag add_subscribers_to_list_path do
+      = hidden_field_tag :list_id, @list.id
+      .field
+        = label_tag :subscribers, "Add someone else to this list:"
+        = text_area_tag :subscribers, "example@example.com\nexample2@example.com", :onclick => 'clear_add_someone_default_text(this);'
+        = submit_tag 'Add'
+
+    = form_tag remove_from_list_path do
+      = hidden_field_tag :list_id, @list.id
+      .field
+        = label_tag "remove_subscriber", "Remove one or more subscribers from this list:"
+        = select_tag 'subscriber_id', (options_from_collection_for_select(@list.subscribers.sort_by(&:email), 'id', 'email')).html_safe, multiple: true
+        = submit_tag 'Remove'
+
+    Delete this list:
+    = link_to 'Delete', @list, data: {confirm: 'Are you sure?'}, :method => :delete

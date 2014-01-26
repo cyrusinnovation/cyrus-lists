@@ -1,0 +1,20 @@
+%tr.archives_lists_header
+  %th.archives_from_header From
+  %th.archives_header Subject
+  %th.archives_header Date
+  %th
+-archive_emails.each do |email|
+
+  %tr{:class => (cycle('odd_row', 'even_row'))}
+    %td.archives_from_cell=email["from"]
+    %td=email["subject"]
+    %td=email["date"]
+    %td{:class => 'view-message', :data=>{:uid => email["uid"]}}
+      %button
+        View Message
+
+  %tr
+    %td{:colspan=>"4"}
+      .message-body{:style => 'display:none;', :id => email["uid"]}
+        =email["body"].html_safe
+

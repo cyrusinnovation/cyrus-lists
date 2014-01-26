@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %title Listlist
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+
+    = stylesheet_link_tag :application, :media => "all"
+    = javascript_include_tag :application, controller_name
+
+    = csrf_meta_tags
+  %body{:class => params[:controller]}
+    #container.container
+      %header
+        %div.logo
+          %a{:class => :plain_link, :href => root_path}
+            %span.cyrus_left Cyrus
+            %span.cyrus_right Mailing List List
+        %div.header_bar
+          - if user_signed_in?
+            %span= "Logged in as #{current_user.email}"
+            | 
+            %span
+              =link_to 'New List', new_list_path, :onclick => 'open_new_list(); return false;'
+            |
+            %span
+              =link_to 'Remove user', remove_user_selector_path, :onclick => 'open_remove_user(); return false;'
+            |
+            %span
+              = link_to('Logout', destroy_user_session_path, :method=>'delete')
+          - else
+            = link_to('Login', new_user_session_path)
+            |
+            = link_to('Login with Gmail', user_omniauth_authorize_path(:google))            
+        %nav
+          %ul.hmenu
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      #main{:role => "main"}
+        = yield
+      %footer
+

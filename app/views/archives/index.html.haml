@@ -1,0 +1,11 @@
+%div.category_header= "Recent Messages for #{@list.name}"
+%table.lists_table#archives-table{:data => {:list => @list.id}}
+  %tr.category_lists_header
+    %th.archives_from_header From
+    %th.archives_header Subject
+    %th.archives_header Date
+    %th
+
+.loading
+  =image_tag(image_path("ajax-loader.gif"), width: "32px", height: "32px")
+  Now Loading...

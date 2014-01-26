@@ -1,0 +1,18 @@
+domain: cyruslists.com
+list_domain_aliases:
+    - cyruslists.com
+    - lists.cyrusinnovation.com
+organization_domain: cyrusinnovation.com
+organization_domain_aliases:
+    - cyrusinnovation.com
+    - lists.cyrusinnovation.com
+    - cyruslists.com
+catchall_address: catchall@cyrusinnovation.com
+smtp:
+    address: <%= ENV["SMTP_SERVER"] %>
+    port: <%= ENV["SMTP_PORT"] %>
+    user_name: <%= ENV["SMTP_USERNAME"] %>
+    password: <%= ENV["SMTP_PASSWORD"] %>
+smtp_server_address: cyrusinnovation.com
+archive_address: <%= ENV["LISTLIST_ARCHIVE_EMAIL"] %>
+archive_password: <%= ENV["LISTLIST_ARCHIVE_PASSWORD"] %>

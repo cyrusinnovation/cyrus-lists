@@ -1,0 +1,32 @@
+= form_for @list do |f|
+  %table        
+    %tr
+      .field
+        %td
+          = f.label :name, 'Name:'
+        %td        
+          = f.text_field :name
+          = "@#{Settings.domain}"
+    %tr
+      .field
+        %td
+          = f.label :category, 'Category:'
+        %td
+          = f.text_field :category, :value => ''
+    %tr        
+      .field
+        %td
+          = f.label :description, 'Description:'
+        %td
+          = f.text_field :description
+    %tr        
+      .field
+        %td
+          = f.label :restricted, 'Restricted Access:'
+        %td
+          = f.check_box :restricted
+          %span.small_text (new subscribers may only be added by current subscribers)
+    %tr        
+      %td
+        .actions
+          = f.submit 'Create'

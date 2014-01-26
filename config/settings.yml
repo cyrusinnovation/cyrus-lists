@@ -1,0 +1,34 @@
+# The domain of the list server
+domain: cyruslists.com
+
+# The domain of the list server plus any other domain aliases for that server
+list_domain_aliases:
+    - cyruslists.com
+    - lists.cyrusinnovation.com
+
+# Only subscribers with an email address within this domain wil be able
+# to access the web console.
+organization_domain: cyrusinnovation.com
+
+# Any domain that are recognized as part of the organization. 
+# If a list has a subscriber with an email address that does not match 
+# any of these domains, the list will be shown to have external subscribers.
+organization_domain_aliases:
+    - cyrusinnovation.com
+    - lists.cyrusinnovation.com
+    - cyruslists.com
+
+# Emails that do not match any lists are sent here.
+catchall_address: catchall@cyrusinnovation.com
+
+# SMTP Settings
+#smtp:
+#    address: <%= ENV["SMTP_SERVER"] %>
+#    port: <%= ENV["SMTP_PORT"] %>
+#    user_name: <%= ENV["SMTP_USERNAME"] %>
+#    password: <%= ENV["SMTP_PASSWORD"] %>
+#smtp_server_address: cyrusinnovation.com
+
+# Gmail account info for storing archived messages
+# archive_address: <%= ENV["LISTLIST_ARCHIVE_EMAIL"] %>
+# archive_password: <%= ENV["LISTLIST_ARCHIVE_PASSWORD"] %>

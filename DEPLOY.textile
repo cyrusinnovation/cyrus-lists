@@ -1,0 +1,43 @@
+h2. Production Deployment Details
+
+These are just some things I learned while trying to get a ListList box up on heroku from scratch. One important thing to know before getting started is that our ListList heroku account costs ~$70 per month. 
+
+h3. Heroku
+
+CyrusLists runs on Heroku in production. It also depends on several Heroku addons. Our Heroku configuraton uses a web dyno and an additional worker dyno which is responsible for retrieving messages from the archive.
+
+h4. Environment Variables
+
+The following environment variables need to be set with `heroku config:set VAR=VALUE`
+
+ - SMTP_SERVER
+ - SMTP_PORT
+ - SMTP_USERNAME
+ - SMTP_PASSWORD
+ - LISTLIST_ARCHIVE_EMAIL
+ - LISTLIST_ARCHIVE_PASSWORD
+
+h3. CloudMailIn 
+
+This service posts each email it recieves to the app's /incoming route. However, without a paid account they will only do this for emails sent to an email address they provide. We have a paid account so that messages sent to *@cyruslists.com are serialized and posted to cyruslists.com/incoming
+
+h3. Memcachier 
+
+Archived messages are cached by Memcachier.
+
+h3. Redis To Go 
+
+Resque is used to create background tasks for retrieving archived emails. Resque relies on redis so the Redis To Go plugin must be enabled in heroku for archives to work.
+
+h3. Heroku Scheduler 
+
+Used to run periodic tasks:
+
+`rake update_archives` (daily)
+
+`rake incremental_update` (every 10m)
+
+h3. SendGrid
+
+Cloud email service. Necessary since we can't install our own mail server on heroku. 
+

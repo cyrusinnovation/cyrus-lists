@@ -1,0 +1,64 @@
+$(document).ready(function () {
+    $('.subscribers_button')
+            .bind('ajax:success', function (event, data, status, xhr) {
+                open_subscription_dialog('Subscribers', data);
+            });
+
+    $('.subscription_checkbox').change(function () {
+        var list_id = $(this).attr('list_id');
+
+        if (this.checked == true) {
+            $.get("/add_current_user_to_list", {list_id:list_id});
+            increment_subscribers_count(this);
+        }
+        else {
+            $.get("/remove_current_user_from_list", {list_id:list_id});
+            decrement_subscribers_count(this);
+        }
+
+        return false;
+    });
+
+});
+
+function increment_subscribers_count(checkbox) {
+    var old_count = parseInt(subscribers_count_from_checkbox(checkbox).html());
+    subscribers_count_from_checkbox(checkbox).html(old_count + 1);
+}
+
+function decrement_subscribers_count(checkbox) {
+    var old_count = parseInt(subscribers_count_from_checkbox(checkbox).html());
+    subscribers_count_from_checkbox(checkbox).html(old_count - 1);
+}
+
+function subscribers_count_from_checkbox(checkbox) {
+    return $(checkbox).parent().parent().find('.subscribers_count');
+}
+
+function open_subscription_dialog(title, innerHtml) {
+    $('<div></div>').html(innerHtml).dialog({autoOpen:true, title:title, draggable:true, width:450});
+}
+
+function open_edit_list(id, list_name) {
+    $.get("/lists/" + id + "/edit", function (response) {
+        $('<div></div>').html(response).dialog({autoOpen:true, title:'Editing: ' + list_name + '@<%= Settings.domain %>', draggable:true, width:950});
+    });
+}
+
+function clear_add_someone_default_text(input) {
+    if (input.value == "example@example.com\nexample2@example.com")
+        input.value = "";
+}
+
+function open_new_list() {
+    $.get("/lists/new", function(response) {
+        $('<div></div>').html(response).dialog({autoOpen: true, title: 'New List', draggable: true, width: 750});
+    });
+}
+
+
+function open_remove_user() {
+    $.get("/remove_user_selector", function(response) {
+        $('<div></div>').html(response).dialog({autoOpen: true, title: 'Remove user', draggable: true, width: 750});
+    });
+}

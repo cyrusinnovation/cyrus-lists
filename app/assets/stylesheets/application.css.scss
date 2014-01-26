@@ -1,0 +1,198 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery-ui-1.8.4.custom
+ *= require_tree .
+*/
+
+body {
+    font-family: Tahoma,Lucida Grande,Arial,Helvetica,sans-serif;
+    color: #777777;
+}
+
+.hidden{
+  display:none;
+}
+
+.header_bar {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.category_header {
+    font-weight: bold;
+    font-size: large;
+    padding-left: 5px;
+    margin-bottom: 8px;
+}
+
+.lists_table {
+    border-collapse: collapse;
+    width: 1227px;
+}
+
+.list_name {
+    width: 350px;
+}
+
+.list_description {
+    width: 600px;
+}
+
+.subscribed_header, .description_header, .archives_header {
+    text-align: left;
+}
+
+.lock_image {
+    padding-left: 10px;
+}
+
+.subscriber_checkbox {
+    margin-right: 10px;
+    width: 12px;
+}
+
+.restricted_header {
+    width:40px;
+}
+
+.outside_email_header {
+    width: 40px;
+}
+
+.outside_email_image {
+    padding-left: 10px;
+}
+
+.category_lists_header {
+    background-color: #DFE792;
+    color: #777777;
+    border-spacing: 0px;
+    font-weight: normal;
+}
+.archives_lists_header{
+    background-color: #DFE792;
+    color: #777777;
+    border-spacing: 0px;
+    font-weight: normal;
+}
+
+.archives_from_header, .archives_from_cell{
+    padding-left: 20px;
+    text-align: left;
+}
+
+
+.arrow {
+    cursor: pointer;
+}
+
+tr th {
+    font-weight: inherit;
+}
+
+.logo {
+    background-color: #DFE792;
+    font-weight: bold;
+    font-size: x-large;
+    padding: 5px;
+}
+
+.plain_link {
+    text-decoration: none;
+}
+
+.cyrus_left {
+    color: #777777;
+}
+.cyrus_right {
+    color: #BD2026;
+}
+
+.odd_row {
+    background-color: #F8F3D8;
+}
+
+.even_row {
+    background-color: #FDF9E7;
+}
+
+.small_text {
+    font-size: x-small;
+}
+
+.edit_form {
+    color: #777;
+    padding: 10px;
+    font-size: medium;
+    line-height: 200%;
+}
+
+.new_list{
+    color: #777777;
+}
+
+#description {
+    width: 450px;
+}
+
+#category {
+    width: 450px;
+    margin-left: 17px;
+}
+
+#subscribers {
+    width: 450px;
+    margin-left: 37px;
+}
+
+#flash_notice, #flash_alert {
+    padding: 5px 8px;
+    margin: 10px 0;
+}
+
+#flash_notice, #flash_info {
+    background-color: #F9F5E1;
+    border: solid 1px #E9E5D1;
+}
+
+#flash_alert {
+    background-color: #FCC;
+    border: solid 1px #C66;
+}
+
+button, input[type="submit"], input[type="button"], a.button{
+    background-color: #34889C;
+    background-image: -webkit-linear-gradient(top, #3FB6BB, #34889C); /*#2F96A4, #24727C*/
+    border-radius: 4px;
+    border: 1px solid #308497;
+    color: #FFFFFF;
+}
+
+a.button {
+  font-size: 11px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 2px 6px 3px 6px;
+  box-sizing: border-box;
+  margin: 2px;
+  height: 20px;
+  line-height: normal;
+  font-family: 'lucida grande';
+  width: 100px;
+  text-align: center;
+}
+
+ul.subscribers_list {
+  list-style: none;
+  margin: 0;
+}
+

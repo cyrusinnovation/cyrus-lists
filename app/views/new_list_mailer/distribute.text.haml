@@ -1,0 +1,7 @@
+= "Description: #{@list.description}"
+= "Created by: #{@list.created_by.email}"
+= "This is an automated notification. To subscribe to the #{@list.name} list, follow this link:"
+= "\n\n"
+= "#{add_current_user_to_list_url}?list_id=#{@list.id}"
+= "\n"
+= "To stop receiving notifications about newly created lists, visit #{lists_url} and click the 'Remove me' button for the newlist list."
