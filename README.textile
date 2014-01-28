@@ -93,4 +93,4 @@ Thanks go to:
 
 h2. License
 
-Decision pending.
+MIT
