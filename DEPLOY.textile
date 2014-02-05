@@ -8,7 +8,7 @@ CyrusLists runs on Heroku in production. It also depends on several Heroku addon
 
 h4. Environment Variables
 
-The following environment variables need to be set with `heroku config:set VAR=VALUE`
+The following environment variables need to be set with `heroku config:set VAR=VALUE`. See https://devcenter.heroku.com/articles/config-vars for more info.
 
 
 * SMTP_SERVER
