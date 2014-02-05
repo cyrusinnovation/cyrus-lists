@@ -10,12 +10,14 @@ h4. Environment Variables
 
 The following environment variables need to be set with `heroku config:set VAR=VALUE`
 
- - SMTP_SERVER
- - SMTP_PORT
- - SMTP_USERNAME
- - SMTP_PASSWORD
- - LISTLIST_ARCHIVE_EMAIL
- - LISTLIST_ARCHIVE_PASSWORD
+
+* SMTP_SERVER
+* SMTP_PORT
+* SMTP_USERNAME
+* SMTP_PASSWORD
+* LISTLIST_ARCHIVE_EMAIL
+* LISTLIST_ARCHIVE_PASSWORD
+
 
 h3. CloudMailIn 
 
