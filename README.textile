@@ -83,8 +83,9 @@ Thanks go to:
 - Rex Madden for the initial idea
 - "Jesse Chen":https://github.com/jessechen and "Daniel Ramteke":https://github.com/danramteke for the initial Python implementation
 - "Jim Stewart":https://github.com/fweep and "Aldric Giacomoni":https://github.com/trevoke for some bug-fixing
-- Jacob O'Donnell, Najati Imam and "Aldric Giacomoni":https://github.com/trevoke for the Rails implementation
+- "Jacob O'Donnell":https://github.com/jodonnell, "Najati Imam":https://github.com/najati and "Aldric Giacomoni":https://github.com/trevoke for the Rails implementation
 - "Steven Nunez":https://github.com/stevennunez and Beth Brown for implementation of archives
+- "Jeremy Fine":https://github.com/jjfine for the massive work of preparing this to be open-sourced
 - All of Cyrus for ideas, fixes and improvements
 
 h2. License
