@@ -6,7 +6,7 @@ describe ListsHelper do
   end
 
   it "can create a mail to link" do
-    email_list_mail_to('name').should == "<a href=\"mailto:name@#{Settings.domain}\">name@#{Settings.domain}</a>"
+    email_list_mail_to('name').should == "<a href=\"mailto:name@#{Settings.domain}\">name</a>"
   end
 
   it "can get all subscribers but one in a select ready helper" do

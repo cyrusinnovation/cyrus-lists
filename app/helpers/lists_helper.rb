@@ -4,7 +4,7 @@ module ListsHelper
   end
 
   def email_list_mail_to name
-    mail_to email_list(name)
+    mail_to email_list(name), name
   end
 
   def get_all_subscribers_except list, except
