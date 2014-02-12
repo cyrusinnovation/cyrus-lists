@@ -1,10 +1,8 @@
 h1. Listlist
 
-Listlist is a mailing list management system which relies on gentle anarchy, allowing every registered user to create/update/delete lists.
+Listlist is a mailing list management system which relies on gentle anarchy, allowing every registered user to create/update/delete lists. It is possible to create locked lists. Only current subscribers can add subscribers to a locked list.
 
-h2. More Information
-
-User-facing is the list management. It also sends emails.
+The main page is the list management page. There is also a back-end to send emails to the lists.
 
 h2. Dependencies
 
@@ -14,7 +12,6 @@ To develop this application and run all the specs locally, you will need:
 * postgresql
 * redis (you can run @rake spec:noredis@ to run the non-redis-dependent specs)
 * phantomjs
-
 
 h3. Setting up PostgreSQL
 
@@ -30,18 +27,15 @@ postgres=> \q
 
 h3. Running in development mode
 
-If you want to get the archives going, right now, you need a resque worker in dev mode. Ergo:
+If you want to get the archives going, you need a resque worker in dev mode. Ergo:
 
-    $ rake resque:work
+    @$ rake resque:work@
 
 h3. Running with coverage
 
-Coverage will be enabled if you set the COV environment variable to ... Something. Ergo:
+Coverage will be enabled if you set the COV environment variable. Ergo:
 
-    $ COV=1 rake spec
-    $ COV=true rake spec
-
-Both will work.
+    @$ COV=1 rake spec@
 
 h3. Clearing the cache
 
@@ -57,15 +51,17 @@ The production application is hosted on Heroku. Check *DEPLOY.textile* in the ro
 
 h2. Getting Started
 
-All settings are managed by the rails_config gem. Most of the values are bogus but should be ok for dev and testing.
+All settings are managed by the "rails_config":https://github.com/railsjedi/rails_config gem. Most of the values are bogus but should be ok for dev and testing.
 
-User accounts are automatically created when logging in for the first time using a gmail account.  You can use another google apps domain by changing the 'organization_domain' setting.
+User accounts are automatically created when logging in for the first time using a Gmail account.  You can use another Google Apps domain by changing the *organization_domain* setting.
 
 When you login, you'll see a list of mailing lists. You can reorder them,
 edit them, join one, leave one, create one, delete one.
 And then you can send emails to those lists.
 
 h2. Documentation and Support
+
+TBD
 
 h3. Deleting an Email Address from All Lists
 
