@@ -12,15 +12,13 @@ To develop this application and run all the specs locally, you will need:
 
 * rvm
 * postgresql
-* redis
+* redis (you can run @rake spec:noredis@ to run the non-redis-dependent specs)
+* phantomjs
 
-(If you want to run all the specs without starting redis, you can run
-@rake spec:noredis@
-)
 
 h3. Setting up PostgreSQL
 
-I don't know about you, but I rarely ever set up rails apps with postgres, so I always forget how to make it work. Here it is, for next time. Change the password to what you really want it to be. hunter2 is a reference to (bash.org)[http://www.bash.org/?244321].
+I don't know about you, but I rarely ever set up rails apps with postgres, so I always forget how to make it work. Here it is, for next time. Change the password to what you really want it to be. hunter2 is a reference to "bash.org":http://www.bash.org/?244321.
 
 bq. $ psql -U #{someadminuser} postgres
 postgres=> CREATE USER listlist WITH PASSWORD 'hunter2';
@@ -29,8 +27,6 @@ postgres=> \q
 $ psql -U listlist postgres
 postgres=> CREATE DATABASE listlist_development;
 postgres=> \q
-
-I hope that helps. It sure as hell will help me.
 
 h3. Running in development mode
 
@@ -49,7 +45,7 @@ Both will work.
 
 h3. Clearing the cache
 
-You may run into issues parsing some emails. Or something. There are two options:
+You may run into issues parsing some emails. There are two options:
 
 1) Delete the tmp directory
 2) From the rails console, run Rails.cache.clear
@@ -57,7 +53,7 @@ You may run into issues parsing some emails. Or something. There are two options
 
 h2. Installing the Application
 
-The production application is hosted on Heroku. Check DEPLOY.textile for deployment details.
+The production application is hosted on Heroku. Check *DEPLOY.textile* in the root directory for deployment details.
 
 h2. Getting Started
 
@@ -79,16 +75,16 @@ lists, and from the database.
 
 h4. Issues
 
-Check the issues in Github.
+Check the issues on "Github":https://github.com/cyrusinnovation/cyrus-lists/issues.
 
 h2. Credits
 
 Thanks go to:
 - Rex Madden for the initial idea
-- Jesse Chen and Daniel Ramteke for the initial Python implementation
-- Jim Stewart and Aldric Giacomoni for some bug-fixing
-- Jacob O'Donnell, Najati Imam and Aldric Giacomoni for the Rails implementation
-- Steven Nunez and Beth Brown for implementation of archives
+- "Jesse Chen":https://github.com/jessechen and "Daniel Ramteke":https://github.com/danramteke for the initial Python implementation
+- "Jim Stewart":https://github.com/fweep and "Aldric Giacomoni":https://github.com/trevoke for some bug-fixing
+- Jacob O'Donnell, Najati Imam and "Aldric Giacomoni":https://github.com/trevoke for the Rails implementation
+- "Steven Nunez":https://github.com/stevennunez and Beth Brown for implementation of archives
 - All of Cyrus for ideas, fixes and improvements
 
 h2. License
