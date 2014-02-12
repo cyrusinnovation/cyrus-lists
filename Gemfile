@@ -39,7 +39,8 @@ group :test do
   gem "factory_girl_rails", "~> 4.3.0"
   gem "email_spec", "~> 1.2.1"
   gem "capybara", '~> 2.0.2'
-  gem "capybara-webkit", '~> 1.0.0'
+  gem 'poltergeist'
+#  gem "capybara-webkit", '~> 1.0.0'
   gem 'database_cleaner'
 end
 
