@@ -29,5 +29,6 @@
         = select_tag 'subscriber_id', (options_from_collection_for_select(@list.subscribers.sort_by(&:email), 'id', 'email')).html_safe, multiple: true
         = submit_tag 'Remove'
 
+  -if @list.can_user_delete?(@user)
     Delete this list:
     = link_to 'Delete', @list, data: {confirm: 'Are you sure?'}, :method => :delete

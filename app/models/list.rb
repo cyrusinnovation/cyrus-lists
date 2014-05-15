@@ -66,6 +66,10 @@ class List < ActiveRecord::Base
     !restricted? || has_subscriber?(user.subscriber)
   end
 
+  def can_user_delete? user
+    can_user_modify?(user) || subscribers.count == 0
+  end
+
   def update_last_sent_time
     self.last_sent_time = DateTime.now
     self.save!

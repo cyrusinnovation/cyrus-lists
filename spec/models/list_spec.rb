@@ -88,6 +88,27 @@ describe List do
     list.can_user_modify?(user).should be_false
   end
 
+  it "can tell if a user can delete a list" do
+    user = FactoryGirl.create(:user)
+    list = FactoryGirl.create(:list, :restricted => true, :subscribers => [user.subscriber])
+    list.can_user_delete?(user).should be_true
+  end
+
+  it "can tell if a user can delete a list" do
+    user = FactoryGirl.create(:user)
+    list = FactoryGirl.create(:list, :restricted => true, :subscribers => [])
+    list.can_user_delete?(user).should be_true
+  end
+
+  it "can tell if a user can not delete a list" do
+    user = FactoryGirl.create(:user)
+    another_user = FactoryGirl.create(:user)
+    list = FactoryGirl.create(:list, :restricted => true, :subscribers => [another_user.subscriber])
+    list.can_user_delete?(user).should be_false
+  end
+
+
+
   it "can update last sent email time" do
     list = FactoryGirl.create(:list)
     list.update_last_sent_time
