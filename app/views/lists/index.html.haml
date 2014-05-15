@@ -21,7 +21,7 @@
         %td.subscriber_checkbox
           - if !(list.restricted && !@user.subscriber.lists.include?(list))
             %input{:id => "#{list.name}-checkbox" ,:class => "subscription_checkbox", :type => :checkbox, :checked => (@user.subscriber.lists.include?(list)), :list_id => list.id}
-            %td.list_name= email_list_mail_to list.name
+        %td.list_name= email_list_mail_to list.name
         %td.list_description= list.description
         %td.subscribers_list
           = link_to list_subscribers_path(list.id), :remote => true, :class => "subscribers_button button", "data-type"=>"html" do
