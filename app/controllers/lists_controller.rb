@@ -28,10 +28,8 @@ class ListsController < ApplicationController
     list = List.new(params[:list])
     Rails.logger.info 'new list'
     list.subscribers << current_user.subscriber
-    Rails.logger.info current_user.subscriber
     Rails.logger.info 'added subscriber'
     list.created_by = current_user
-    Rails.logger.info current_user
     Rails.logger.info 'added current user'
     Rails.logger.info list.inspect
     begin
