@@ -26,9 +26,13 @@ class ListsController < ApplicationController
     list = List.new(params[:list])
     list.subscribers << current_user.subscriber
     list.created_by = current_user
-    list.save
-
-    redirect_to List, get_flash_message(list)
+    if list.save
+      redirect_to List, get_flash_message(list)
+    else
+      puts 'hey that save totally failed'
+      puts list.inspect
+      redirect_to List, get_flash_message(list)
+    end
   end
 
   def destroy
