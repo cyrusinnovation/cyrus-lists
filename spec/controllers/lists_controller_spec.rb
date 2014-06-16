@@ -165,6 +165,18 @@ describe ListsController do
           post :create, {:list => valid_attributes}
           response.should redirect_to(List)
         end
+
+        it "sends an email to the newly created list's subscriber" do
+          NewListMailer.should_receive(:distribute).exactly(1).times
+          post :create, {:list => valid_attributes}
+          response.should redirect_to(List)
+        end
+
+        it "does not sends an email to the newly created list's subscriber if its called newlist" do
+          NewListMailer.should_receive(:distribute).exactly(0).times
+          post :create, {:list => {:name => 'newlist', :description => 'boom', :category => 'Bob'}}
+          response.should redirect_to(List)
+        end
       end
 
       it "with invalid params" do

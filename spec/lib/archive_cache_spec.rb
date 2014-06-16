@@ -23,8 +23,8 @@ describe ArchiveCache do
 
       job = mock("Job", meta_id: 1, succeeded?: true, result: nil)
 
-      GmailService.should_receive(:enqueue).exactly(2).times.and_return(job)
-      GmailService.should_receive(:get_meta).exactly(2).times.and_return(job)
+      GmailService.should_receive(:enqueue).exactly(1).times.and_return(job)
+      GmailService.should_receive(:get_meta).exactly(1).times.and_return(job)
 
       ArchiveCache.update
     end
@@ -34,8 +34,8 @@ describe ArchiveCache do
 
       job = mock("Job", meta_id: 1, succeeded?: true, result: "result")
 
-      GmailService.should_receive(:enqueue).exactly(2).times.and_return(job)
-      GmailService.should_receive(:get_meta).exactly(2).times.and_return(job)
+      GmailService.should_receive(:enqueue).exactly(1).times.and_return(job)
+      GmailService.should_receive(:get_meta).exactly(1).times.and_return(job)
 
       rails_cache = mock("Cache", fetch: mock, delete: mock)
       rails_cache.should_receive(:fetch).with(list.name).at_least(1).times
