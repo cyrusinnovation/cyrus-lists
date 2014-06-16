@@ -34,13 +34,14 @@ class List < ActiveRecord::Base
 
 
   def self.newlist
-    announcements = Category.find_or_create_by(name: 'Announcements')
+    essential = Category.find_or_create_by(name: 'Essential')
     creation_options = {
         name: 'newlist',
-        description: 'Automated new list creation announcements',
-        category: announcements,
+        category: essential,
+        description: 'Automated list creation announcements'
     }
-    List.find_or_create_by(creation_options)
+    new_list = List.find_by_name('newlist')
+    new_list.nil? ? List.find_or_create_by(creation_options) : new_list
   end
 
   def append_emails emails
