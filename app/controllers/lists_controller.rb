@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   end
 
   def new
-    Rails.logger.info 'HIT NEW!'
+    puts 'HIT NEW!'
     @list = List.new
     render :layout => false
   end
@@ -23,20 +23,20 @@ class ListsController < ApplicationController
 
   def create
     params[:list][:category] = Category.find_or_create_by(name: params[:list][:category])
-    Rails.logger.info 'HIT CREATE!'
-    Rails.logger.info params.inspect
+    puts 'HIT CREATE!'
+    puts params.inspect
     list = List.new(params[:list])
-    Rails.logger.info 'new list'
+    puts 'new list'
     list.subscribers << current_user.subscriber
-    Rails.logger.info 'added subscriber'
+    puts 'added subscriber'
     list.created_by = current_user
-    Rails.logger.info 'added current user'
-    Rails.logger.info list.inspect
+    puts 'added current user'
+    puts list.inspect
     if list.save
-      Rails.logger.info 'saved!'
+      puts 'saved!'
       redirect_to List, get_flash_message(list)
     else
-      Rails.logger.info 'hey that save totally failed'
+      puts 'hey that save totally failed'
       redirect_to List, get_flash_message(list)
     end
   end
