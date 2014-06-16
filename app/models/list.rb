@@ -16,6 +16,7 @@ class List < ActiveRecord::Base
   belongs_to :category
   belongs_to :created_by, class_name: 'User'
 
+  after_create :send_email_to_newlist, if: Proc.new { |l| l.name != 'newlist' }
   before_save :downcase_name
 
   scope :sorted, -> { order('name ASC') }

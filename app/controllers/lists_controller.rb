@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   end
 
   def new
+    Rails.logger.info 'HIT NEW!'
     @list = List.new
     render :layout => false
   end
@@ -22,11 +23,22 @@ class ListsController < ApplicationController
 
   def create
     params[:list][:category] = Category.find_or_create_by(name: params[:list][:category])
+    Rails.logger.info 'HIT CREATE!'
+    Rails.logger.info params.inspect
     list = List.new(params[:list])
+    Rails.logger.info 'new list'
     list.subscribers << current_user.subscriber
+    Rails.logger.info current_user.subscriber.id
+    Rails.logger.info 'added subscriber'
     list.created_by = current_user
-    if list.save
-      list.send_email_to_newlist if list.name != 'newlist'
+    Rails.logger.info current_user.id
+    Rails.logger.info 'added current user'
+    Rails.logger.info list.inspect
+    begin
+      list.save!
+    rescue Exception => e
+      Rails.logger.error e.message
+      Rails.logger.error e.backtrace.inspect
     end
     redirect_to List, get_flash_message(list)
 
