@@ -10,7 +10,6 @@ class ListsController < ApplicationController
   end
 
   def new
-    puts 'HIT NEW!'
     @list = List.new
     render :layout => false
   end
@@ -23,17 +22,12 @@ class ListsController < ApplicationController
 
   def create
     params[:list][:category] = Category.find_or_create_by(name: params[:list][:category])
-    puts 'HIT CREATE!'
-    puts params.inspect
+
     list = List.new(params[:list])
-    puts 'new list'
     list.subscribers << current_user.subscriber
-    puts 'added subscriber'
     list.created_by = current_user
-    puts 'added current user'
     puts list.inspect
     if list.save
-      puts 'saved!'
       redirect_to List, get_flash_message(list)
     else
       puts 'hey that save totally failed'
