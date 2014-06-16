@@ -22,13 +22,13 @@ class ListsController < ApplicationController
 
   def create
     params[:list][:category] = Category.find_or_create_by(name: params[:list][:category])
-    @list = List.new(params[:list])
-    @list.subscribers << current_user.subscriber
-    @list.created_by = current_user
-    if @list.save
-      @list.send_email_to_newlist if @list.name != 'newlist'
+    list = List.new(params[:list])
+    list.subscribers << current_user.subscriber
+    list.created_by = current_user
+    if list.save
+      list.send_email_to_newlist if list.name != 'newlist'
     end
-    redirect_to List, get_flash_message(@list)
+    redirect_to List, get_flash_message(list)
 
   end
 
