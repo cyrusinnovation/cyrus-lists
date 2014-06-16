@@ -32,13 +32,14 @@ class ListsController < ApplicationController
     list.created_by = current_user
     Rails.logger.info 'added current user'
     Rails.logger.info list.inspect
-    if list.save
-      Rails.logger.info 'saved!'
-      redirect_to List, get_flash_message(list)
-    else
-      Rails.logger.info 'hey that save totally failed'
-      redirect_to List, get_flash_message(list)
+    begin
+      list.save!
+    rescue Exception => e
+      Rails.logger.error e.message
+      Rails.logger.error e.backtrace.inspect
     end
+    redirect_to List, get_flash_message(list)
+
   end
 
   def destroy
