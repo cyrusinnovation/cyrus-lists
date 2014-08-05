@@ -10,7 +10,7 @@ gem "haml-rails", "~> 0.3.4", :group => :development
 gem "devise", "~> 3.2.2"
 gem "omniauth-openid", "~> 1.0.1"
 gem 'gmail'
-gem 'resque'
+gem 'resque', '1.24.1'
 gem 'resque-result'
 gem 'dalli'
 gem 'pg'
