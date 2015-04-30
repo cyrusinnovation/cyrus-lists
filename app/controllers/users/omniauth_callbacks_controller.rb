@@ -8,8 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     return render file: Rails.root.join("public", "403.html"), :status => 403 if @user.nil?
     flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
     sign_in @user
-    redirect_to cookies[:return_to]
-    cookies.delete(:return_to)
+    redirect_to root_path
   end
 
   private

@@ -22,12 +22,7 @@ Listlist::Application.routes.draw do
 
 
   root :to => "lists#index"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :only => [:omniauth_callbacks]
-
-  as :user do
-    get 'sign_in' => 'users#log_in', as: :new_user_session
-    delete 'sign_out' => 'users#log_out', as: :destroy_user_session
-  end
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   mount Resque::Server.new, :at => '/resque'
 end

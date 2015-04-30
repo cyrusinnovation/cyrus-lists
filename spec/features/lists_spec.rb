@@ -5,6 +5,7 @@ describe "Lists" do
 
     before(:each) do
       set_omniauth
+      login_as(FactoryGirl.create(:user), scope: :user)
       visit root_path
     end
 

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_filter :authenticate_user_and_save_current_url!
+  before_filter :authenticate_user!
   before_filter :only => [:add_current_user, :add_subscribers, :remove_subscriber] do
     user_can_modify_list? current_user, params[:list_id]
   end

@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
     render :nothing => true, :status => 403
   end
 
-  def authenticate_user_and_save_current_url!
-    cookies[:return_to] = request.fullpath if request.path == add_current_user_to_list_path and !user_signed_in?
-    authenticate_user!
-  end
-
  def after_sign_in_path_for(resource_or_scope)
    case resource_or_scope
    when :user, User
