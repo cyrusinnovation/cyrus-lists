@@ -1,15 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :subscriber
 
-  devise :omniauthable #followed by anything else you need
-
   belongs_to :subscriber, :dependent => :destroy
 
-  def self.find_for_open_id(access_token, signed_in_resource=nil)
+  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token['info']
     email = data['email']
     domain = email.split(/@/)[1]

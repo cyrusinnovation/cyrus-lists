@@ -33,7 +33,7 @@
           - else
             = link_to('Login', new_user_session_path)
             |
-            = link_to('Login with Gmail', user_omniauth_authorize_path(:google))            
+            = link_to('Login with Gmail', user_omniauth_authorize_path(:google_oauth2))
         %nav
           %ul.hmenu
         - flash.each do |name, msg|

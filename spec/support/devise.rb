@@ -4,7 +4,7 @@ end
 
 def set_omniauth
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:google] = {
+  OmniAuth.config.mock_auth[:google_oauth2] = {
     "info" => {
       "email" => "foobar@#{Settings.organization_domain}"
     }

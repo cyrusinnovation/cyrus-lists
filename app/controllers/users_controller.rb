@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def log_in
-    redirect_to user_omniauth_authorize_path(:google)
+    redirect_to user_omniauth_authorize_path(:google_oauth2)
     cookies[:return_to] = session["user_return_to"]
   end
 
