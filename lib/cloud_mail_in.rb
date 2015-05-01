@@ -11,11 +11,7 @@ class CloudMailIn
   end
 
   def addresses
-    addresses = []
-    addresses.concat message.to
-    addresses.concat message.cc if message.cc
-    addresses << @params[:to] if @params[:to] && !@params[:to].empty?
-    addresses
+    [message.to, message.cc, @params[:to]].flatten.compact
   end
 
   def message_id
