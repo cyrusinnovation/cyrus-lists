@@ -22,17 +22,17 @@ class TestSender
     def initialize test_sender
       @test_sender = test_sender
     end
-    
+
     def send_message mail_str, from, to
       @test_sender.deliveries << { :body => mail_str, :from => from, :to => to }
     end
   end
-  
+
   attr_accessor :deliveries
   def initialize
     @deliveries = []
   end
-  
+
   def send &block
     yield(SillySmtp.new self)
   end
@@ -49,7 +49,8 @@ class ListMailer
     sender.send do |smtp|
       emails.collect do |to_address|
         mail['Delivered-To'] = to_address
-        smtp.send_message mail.to_s, mail.from, to_address
+        from_address = mail.from.is_a?(Array) ? mail.from.first : mail.from
+        smtp.send_message mail.to_s, from_address, to_address
       end
     end
   end
